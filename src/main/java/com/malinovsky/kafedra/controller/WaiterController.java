@@ -1,0 +1,10 @@
+package com.malinovsky.kafedra.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/waiter")
+public class WaiterController {
+
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="org.h2.Driver" />
+		<property name="jdbcUrl" value="jdbc:h2:E:\STS\workspace\Diplom\Diplom" />
+		<property name="username" value="malinovsky" />
+		<property name="password" value="Vfkbyjdcrbq13" />
+		<!-- <property name="partitionCount" value="${pool.partitionCount}" /> 
+			<property name="minConnectionsPerPartition" value="${pool.minConnectionsPerPartition}" 
+			/> <property name="maxConnectionsPerPartition" value="${pool.maxConnectionsPerPartition}" 
+			/> <property name="acquireIncrement" value="${pool.acquireIncrement}" /> 
+			<property name="releaseHelperThreads" value="${pool.releaseHelperThreads}" 
+			/> <property name="disableJMX" value="${pool.disableJMX}" /> -->
+		<!-- debug -->
+		<property name="disableConnectionTracking" value="false" />
+		<property name="logStatementsEnabled" value="true" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<array>
+				<value>com.malinovsky.kafedra.model</value>
+			</array>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- Cache -->
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<!-- <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory 
+					</prop> <prop key="net.sf.ehcache.configurationResourceName">/ehcache.hibernate.xml</prop> -->
+
+				<!-- debug -->
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.cache.use_structured_entries">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<array>
+				<value>com/malinovsky/kafedra/model/product.hbm.xml</value>
+				<value>com/malinovsky/kafedra/model/workHistory.hbm.xml</value>
+			</array>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>
