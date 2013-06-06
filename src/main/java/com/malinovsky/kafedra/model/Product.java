@@ -2,21 +2,34 @@ package com.malinovsky.kafedra.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "PRODUCT")
 public class Product {
+	@Id
+	@Column(name = "CAFE_ID")
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private long id;
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "CALCULATION_TYPE")
+	@Enumerated(EnumType.STRING)
 	private CalculationType type;
+	@ManyToOne
+	@JoinColumn(name = "VENDOR_ID")
 	private Vendor vendor;
-	private Double priceByOne;
-
-	public Double getPriceByOne() {
-		return priceByOne;
-	}
-
-	public void setPriceByOne(Double priceByOne) {
-		this.priceByOne = priceByOne;
-	}
-
 	private Set<PriceRecord> prices;
 	private Set<DishProduct> dishes;
 	private Set<CafeProduct> cafes;
