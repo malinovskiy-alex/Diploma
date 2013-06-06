@@ -27,23 +27,11 @@ public class Dish {
 	private Integer weight;
 	@Column(name = "DESCRIPTION")
 	private String desc;
-	@Column(name = "PRICE")
-	private Double price;
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-	/*
-	 * @OneToMany private Set<PriceRecord> prices;
-	 */
-	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<PriceRecord> prices;
+	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<DishProduct> ingradients;
-	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<OrderDish> orders;
 
 	public Dish() {

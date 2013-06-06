@@ -2,14 +2,17 @@ package com.malinovsky.kafedra.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -18,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "PRODUCT")
 public class Product {
 	@Id
-	@Column(name = "CAFE_ID")
+	@Column(name = "PRODUCT_ID")
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private long id;
@@ -30,8 +33,11 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "VENDOR_ID")
 	private Vendor vendor;
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<PriceRecord> prices;
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<DishProduct> dishes;
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<CafeProduct> cafes;
 
 	public Product() {

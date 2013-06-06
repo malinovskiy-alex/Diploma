@@ -32,7 +32,7 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "CAFE_ID")
 	private Cafe cafe;
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<OrderDish> dishes;
 
 	public Order() {

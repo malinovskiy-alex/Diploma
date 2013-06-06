@@ -2,11 +2,38 @@ package com.malinovsky.kafedra.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "WORK_HISTORY")
 public class WorkHistory {
+	@Id
+	@Column(name = "RECORD_ID")
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private long id;
+	@Column(name = "DATE")
+	@Temporal(TemporalType.DATE)
 	private Date date;
+	@Column(name = "PAYED")
 	private boolean payed;
+	@Column(name = "DAY_TIME")
+	@Enumerated(EnumType.STRING)
 	private DayType type;
+	@ManyToOne
+	@JoinColumn(name = "EMPLOYER_ID")
 	private Employer employer;
 
 	public WorkHistory() {
