@@ -1,5 +1,7 @@
 package com.malinovsky.kafedra.model;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OrderBy;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -34,7 +37,8 @@ public class Product {
 	@JoinColumn(name = "VENDOR_ID")
 	private Vendor vendor;
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<PriceRecord> prices;
+	@OrderBy(clause="date")
+	private List<PriceRecord> prices;
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<DishProduct> dishes;
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -92,12 +96,15 @@ public class Product {
 		this.cafes = cafes;
 	}
 
-	public Set<PriceRecord> getPrices() {
+	public List<PriceRecord> getPrices() {
 		return prices;
 	}
 
-	public void setPrices(Set<PriceRecord> prices) {
+	public void setPrices(List<PriceRecord> prices) {
 		this.prices = prices;
 	}
 
+	public double getPrice() {
+		return prices.get(prices.size() - 1).getPrice();
+	}
 }

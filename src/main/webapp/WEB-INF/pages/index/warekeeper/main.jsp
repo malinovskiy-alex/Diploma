@@ -18,14 +18,14 @@
 				<tr>
 					<form:input path="products[${index.index}].product.name"
 						type="hidden" />
-					<form:input path="products[${index.index}].product.priceByOne"
+					<form:input path="products[${index.index}].product.price"
 						type="hidden" />
 					<form:input path="products[${index.index}].product.type"
 						type="hidden" />
 					<form:input path="products[${index.index}].availableQuantity"
 						type="hidden" />
 					<td>${pr.product.name}</td>
-					<td>${pr.product.priceByOne}</td>
+					<td>${pr.product.price}</td>
 					<td>${pr.product.type.type}</td>
 					<td>${pr.availableQuantity}</td>
 					<td><form:input path="products[${index.index}].added" /></td>

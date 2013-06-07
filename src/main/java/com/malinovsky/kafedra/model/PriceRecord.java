@@ -73,5 +73,4 @@ public class PriceRecord {
 	public void setDish(Dish dish) {
 		this.dish = dish;
 	}
-
 }
