@@ -1,6 +1,5 @@
 package com.malinovsky.kafedra.model;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -36,9 +35,9 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "VENDOR_ID")
 	private Vendor vendor;
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@OrderBy(clause="date")
-	private List<PriceRecord> prices;
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<ProductPriceRecord> prices;
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<DishProduct> dishes;
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -96,11 +95,11 @@ public class Product {
 		this.cafes = cafes;
 	}
 
-	public List<PriceRecord> getPrices() {
+	public List<ProductPriceRecord> getPrices() {
 		return prices;
 	}
 
-	public void setPrices(List<PriceRecord> prices) {
+	public void setPrices(List<ProductPriceRecord> prices) {
 		this.prices = prices;
 	}
 

@@ -22,12 +22,6 @@
 				<value>com.malinovsky.kafedra.model</value>
 			</array>
 		</property>
-		<property name="mappingResources">
-			<array>
-				<value>com/malinovsky/kafedra/model/product.hbm.xml</value>
-				<value>com/malinovsky/kafedra/model/workHistory.hbm.xml</value>
-			</array>
-		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>

@@ -47,7 +47,7 @@ public class EmployerDaoImplTest {
 	@Test
 	public void testDelete() throws DaoException {
 		Employer e = ed.findByEmail("bakulin-ivan@ukr.net");
-		//assertEquals(10, e.getCafe().getProducts().size());
+		// assertEquals(10, e.getCafe().getProducts().size());
 		assertEquals(45, ed.getAll().size());
 		ed.delete(e);
 		assertEquals(44, ed.getAll().size());

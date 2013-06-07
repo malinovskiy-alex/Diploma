@@ -11,7 +11,7 @@
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="org.h2.Driver" />
-		<property name="jdbcUrl" value="jdbc:h2:E:\STS\workspace\Diplom\Diplom" />
+		<property name="jdbcUrl" value="jdbc:h2:mem:db" />
 		<property name="username" value="malinovsky" />
 		<property name="password" value="Vfkbyjdcrbq13" />
 		<!-- <property name="partitionCount" value="${pool.partitionCount}" /> 

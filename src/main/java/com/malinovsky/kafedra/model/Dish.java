@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OrderBy;
 
 @Entity
 @Table(name = "DISH")
@@ -27,8 +28,9 @@ public class Dish {
 	private Integer weight;
 	@Column(name = "DESCRIPTION")
 	private String desc;
+	@OrderBy(clause = "date")
 	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<PriceRecord> prices;
+	private Set<DishPriceRecord> prices;
 	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<DishProduct> ingradients;
 	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
