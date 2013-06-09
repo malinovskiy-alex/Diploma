@@ -8,73 +8,73 @@
 		<div class="row">
 			<div class="span5">
 				<div class="control-group">
-					<div class="control-label">FIO</div>
+					<div class="control-label">ФИО</div>
 					<div class="controls">
 						<form:input type="text" maxlength="70" path="FIO" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Password</div>
+					<div class="control-label">Пароль</div>
 					<div class="controls">
 						<form:input type="password" maxlength="70" path="address" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Address</div>
+					<div class="control-label">Адресс</div>
 					<div class="controls">
 						<form:input type="text" maxlength="70" path="address" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Phone</div>
+					<div class="control-label">Телефон</div>
 					<div class="controls">
 						<form:input type="text" maxlength="14" path="phone" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Email</div>
+					<div class="control-label">Емейл</div>
 					<div class="controls">
 						<form:input type="text" maxlength="50" path="email" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Birthday</div>
+					<div class="control-label">Дата рождения</div>
 					<div class="controls">
 						<form:input type="text" maxlength="50" path="email" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">INN</div>
+					<div class="control-label">ИНН</div>
 					<div class="controls">
 						<form:input type="text" maxlength="8" path="INN" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Relay number</div>
+					<div class="control-label">Номер смены</div>
 					<div class="controls">
 						<form:input type="text" maxlength="4" path="smenaNumber" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Medical coeficient</div>
+					<div class="control-label">Коефициент больничных</div>
 					<div class="controls">
 						<form:input type="text" maxlength="4" path="medCoef" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Weekend coeficient</div>
+					<div class="control-label">Коэфициент отпускных</div>
 					<div class="controls">
 						<form:input type="text" maxlength="4" path="weekCoef" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Work coeficient</div>
+					<div class="control-label">Коэфициент рабочих</div>
 					<div class="controls">
 						<form:input type="text" maxlength="4" path="workCoef" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Role</div>
+					<div class="control-label">Должность</div>
 					<div class="controls">
 						<form:select path="role" items="${roles}" itemLabel="name"
 							itemValue="id">
@@ -84,10 +84,10 @@
 				<div class="control-group">
 					<div class="control-label">&nbsp;</div>
 					<div class="controls form-buttons">
-						<button type="submit" class="btn">Submit</button>
+						<button type="submit" class="btn">Сохранить</button>
 						<button type="reset"
 							onclick="window.location='<c:url value='cafe-list.html' />'"
-							class="btn">Cancel</button>
+							class="btn">Отменить</button>
 					</div>
 				</div>
 			</div>

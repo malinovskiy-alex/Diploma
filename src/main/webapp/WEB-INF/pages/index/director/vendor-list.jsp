@@ -8,7 +8,6 @@
 			<td>Телефон представителя</td>
 			<td>Адресс представительства</td>
 			<td>Профиль</td>
-			<td>Продукты</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,8 +19,6 @@
 				<td>${vendor.address}</td>
 				<td><a class="btn btn-primary"
 					href="vendor.html?id=${vendor.id}"> Редактировать</a></td>
-				<td><a class="btn btn-primary"
-					href="product-list.html?id=${vendor.id}">Список продуктов</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

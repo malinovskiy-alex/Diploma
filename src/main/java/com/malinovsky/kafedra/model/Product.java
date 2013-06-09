@@ -1,7 +1,7 @@
 package com.malinovsky.kafedra.model;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OrderBy;
 
+import com.malinovsky.kafedra.model.form.ProductBean;
+
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
@@ -35,16 +37,23 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "VENDOR_ID")
 	private Vendor vendor;
-	@OrderBy(clause="date")
+	@OrderBy(clause = "date")
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<ProductPriceRecord> prices;
+	private List<ProductPriceRecord> prices = new ArrayList<ProductPriceRecord>();
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<DishProduct> dishes;
+	private List<DishProduct> dishes = new ArrayList<DishProduct>();
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<CafeProduct> cafes;
+	private List<CafeProduct> cafes = new ArrayList<CafeProduct>();
 
 	public Product() {
 
+	}
+
+	public Product(ProductBean bean) {
+		setId(bean.getId());
+		setName(bean.getName());
+		setType(bean.getType());
+		setVendor(bean.getVendor());
 	}
 
 	public long getId() {
@@ -79,19 +88,19 @@ public class Product {
 		this.vendor = vendor;
 	}
 
-	public Set<DishProduct> getDishes() {
+	public List<DishProduct> getDishes() {
 		return dishes;
 	}
 
-	public void setDishes(Set<DishProduct> dishes) {
+	public void setDishes(List<DishProduct> dishes) {
 		this.dishes = dishes;
 	}
 
-	public Set<CafeProduct> getCafes() {
+	public List<CafeProduct> getCafes() {
 		return cafes;
 	}
 
-	public void setCafes(Set<CafeProduct> cafes) {
+	public void setCafes(List<CafeProduct> cafes) {
 		this.cafes = cafes;
 	}
 
@@ -104,6 +113,6 @@ public class Product {
 	}
 
 	public double getPrice() {
-		return prices.get(prices.size() - 1).getPrice();
+		return prices.get(prices.size() - 1).getValue();
 	}
 }

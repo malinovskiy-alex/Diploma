@@ -26,7 +26,10 @@ public class CafeProduct {
 	private Product product;
 	@Column(name = "AVAILABLE_QUANTITY")
 	private Double availableQuantity;
-	private Double added;
+	@Column(name = "MARGINAL_QUANTITY")
+	private Double marginalQuantity;
+	@Column(name = "ORDER_QUANTITY")
+	private Double orderQuantity;
 
 	public CafeProduct() {
 	}
@@ -63,12 +66,20 @@ public class CafeProduct {
 		this.availableQuantity = availableQuantity;
 	}
 
-	public Double getAdded() {
-		return added;
+	public Double getMarginalQuantity() {
+		return marginalQuantity;
 	}
 
-	public void setAdded(Double added) {
-		this.added = added;
+	public void setMarginalQuantity(Double marginalQuantity) {
+		this.marginalQuantity = marginalQuantity;
+	}
+
+	public Double getOrderQuantity() {
+		return orderQuantity;
+	}
+
+	public void setOrderQuantity(Double orderQuantity) {
+		this.orderQuantity = orderQuantity;
 	}
 
 }

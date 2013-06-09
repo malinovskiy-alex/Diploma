@@ -1,7 +1,8 @@
 package com.malinovsky.kafedra.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDER_TABLE")
 public class Order {
 	@Id
 	@Column(name = "ORDER_ID")
@@ -33,7 +34,7 @@ public class Order {
 	@JoinColumn(name = "CAFE_ID")
 	private Cafe cafe;
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<OrderDish> dishes;
+	private List<OrderDish> dishes = new ArrayList<OrderDish>();
 
 	public Order() {
 	}
@@ -62,11 +63,12 @@ public class Order {
 		this.cafe = cafe;
 	}
 
-	public Set<OrderDish> getDishes() {
+	public List<OrderDish> getDishes() {
 		return dishes;
 	}
 
-	public void setDishes(Set<OrderDish> dishes) {
+	public void setDishes(List<OrderDish> dishes) {
 		this.dishes = dishes;
 	}
+
 }

@@ -1,6 +1,7 @@
 package com.malinovsky.kafedra.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OrderBy;
+
+import com.malinovsky.kafedra.model.form.DishBean;
 
 @Entity
 @Table(name = "DISH")
@@ -30,13 +33,19 @@ public class Dish {
 	private String desc;
 	@OrderBy(clause = "date")
 	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<DishPriceRecord> prices;
+	private List<DishPriceRedord> prices = new ArrayList<DishPriceRedord>();
 	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<DishProduct> ingradients;
+	private List<DishProduct> ingradients = new ArrayList<DishProduct>();
 	@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<OrderDish> orders;
+	private List<OrderDish> orders = new ArrayList<OrderDish>();
 
 	public Dish() {
+	}
+
+	public Dish(DishBean dish) {
+		setId(dish.getId());
+		setName(dish.getName());
+		setDesc(dish.getDescription());
 	}
 
 	public long getId() {
@@ -71,26 +80,31 @@ public class Dish {
 		this.desc = desc;
 	}
 
-	public Set<DishProduct> getIngradients() {
+	public List<DishPriceRedord> getPrices() {
+		return prices;
+	}
+
+	public void setPrices(List<DishPriceRedord> prices) {
+		this.prices = prices;
+	}
+
+	public double getPrice() {
+		return prices.get(prices.size() - 1).getValue();
+	}
+
+	public List<DishProduct> getIngradients() {
 		return ingradients;
 	}
 
-	public void setIngradients(Set<DishProduct> ingradients) {
+	public void setIngradients(List<DishProduct> ingradients) {
 		this.ingradients = ingradients;
 	}
 
-	public Set<OrderDish> getOrders() {
+	public List<OrderDish> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(Set<OrderDish> orders) {
+	public void setOrders(List<OrderDish> orders) {
 		this.orders = orders;
 	}
-
-	/*
-	 * public Set<PriceRecord> getPrices() { return prices; }
-	 * 
-	 * public void setPrices(Set<PriceRecord> prices) { this.prices = prices; }
-	 */
-
 }

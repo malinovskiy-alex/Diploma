@@ -8,25 +8,25 @@
 		<div class="row">
 			<div class="span5">
 				<div class="control-group">
-					<div class="control-label">Organization Name</div>
+					<div class="control-label">Название организации</div>
 					<div class="controls">
 						<form:input type="text" maxlength="50" path="organization" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Advertiser name</div>
+					<div class="control-label">ФИО представителя</div>
 					<div class="controls">
 						<form:input type="text" maxlength="70" path="advertiser" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Phone</div>
+					<div class="control-label">Телефон</div>
 					<div class="controls">
 						<form:input type="text" maxlength="14" path="phone" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Address</div>
+					<div class="control-label">Адресс</div>
 					<div class="controls">
 						<form:input type="text" maxlength="80" path="address" />
 					</div>
@@ -34,10 +34,10 @@
 				<div class="control-group">
 					<div class="control-label">&nbsp;</div>
 					<div class="controls form-buttons">
-						<button type="submit" class="btn">Submit</button>
+						<button type="submit" class="btn">Сохранить</button>
 						<button type="reset"
 							onclick="window.location='<c:url value='vendor-list.html' />'"
-							class="btn">Cancel</button>
+							class="btn">Отменить</button>
 					</div>
 				</div>
 			</div>

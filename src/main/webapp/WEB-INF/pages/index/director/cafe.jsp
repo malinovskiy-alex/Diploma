@@ -8,19 +8,19 @@
 		<div class="row">
 			<div class="span5">
 				<div class="control-group">
-					<div class="control-label">Address</div>
+					<div class="control-label">Адресс</div>
 					<div class="controls">
 						<form:input type="text" maxlength="50" path="address" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Phone</div>
+					<div class="control-label">Телефон</div>
 					<div class="controls">
 						<form:input type="text" maxlength="14" path="phone" />
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="control-label">Places count</div>
+					<div class="control-label">Количество посадочных мест</div>
 					<div class="controls">
 						<form:input type="text" maxlength="4" path="placeCount" />
 					</div>
@@ -28,10 +28,10 @@
 				<div class="control-group">
 					<div class="control-label">&nbsp;</div>
 					<div class="controls form-buttons">
-						<button type="submit" class="btn">Submit</button>
+						<button type="submit" class="btn">Сохранить</button>
 						<button type="reset"
 							onclick="window.location='<c:url value='cafe-list.html' />'"
-							class="btn">Cancel</button>
+							class="btn">Отменить</button>
 					</div>
 				</div>
 			</div>

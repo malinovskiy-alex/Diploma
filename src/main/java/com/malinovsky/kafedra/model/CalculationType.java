@@ -1,7 +1,7 @@
 package com.malinovsky.kafedra.model;
 
 public enum CalculationType {
-	LT("Литр"), GR("Грамм"), SHT("Штуки"),KG("Киллограмм");
+	LT("Литр"), GR("Грамм"), SHT("Штука"),KG("Киллограмм");
 	private CalculationType(String type) {
 		this.type = type;
 	}

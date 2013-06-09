@@ -2,6 +2,10 @@
 <%@page pageEncoding="UTF-8"%>
 
 <a class="btn btn-primary" href="<c:url value='vendor-list.html'/>">
-	Информация по поставщикам </a>
+	Поставщики </a>
 <a class="btn btn-primary" href="<c:url value='cafe-list.html'/>">
-	Информация по кафе </a>
+	Кафе </a>
+<a class="btn btn-primary" href="<c:url value='product-list.html'/>">
+	Продукты </a>
+<a class="btn btn-primary" href="<c:url value='dish-list.html'/>">
+	Блюда </a>

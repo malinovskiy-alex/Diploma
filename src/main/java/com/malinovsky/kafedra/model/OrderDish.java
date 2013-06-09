@@ -30,6 +30,12 @@ public class OrderDish {
 	public OrderDish() {
 	}
 
+	public OrderDish(Order order, Dish dish, Integer count) {
+		setOrder(order);
+		setDish(dish);
+		setNumber(count);
+	}
+
 	public long getId() {
 		return id;
 	}

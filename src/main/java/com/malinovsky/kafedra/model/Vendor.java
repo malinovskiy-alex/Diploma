@@ -1,5 +1,6 @@
 package com.malinovsky.kafedra.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -30,7 +31,7 @@ public class Vendor {
 	@Column(name = "ADDRESS", length = 80)
 	private String address;
 	@OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Product> products;
+	private List<Product> products;
 
 	public Vendor() {
 
@@ -76,11 +77,11 @@ public class Vendor {
 		this.address = address;
 	}
 
-	public Set<Product> getProducts() {
+	public List<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
 
